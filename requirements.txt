@@ -1,0 +1,6 @@
+paho-mqtt
+pyyaml
+fastapi
+uvicorn
+jinja2
+python-multipart

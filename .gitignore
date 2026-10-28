@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.env
+.vscode/
+.idea/
+.DS_Store
+# Configuración local (puede contener brokers/credenciales reales)
+config.yaml
+config copy.yaml
+*.local.yaml
+
+# Entornos virtuales
+venv/
+.venv/

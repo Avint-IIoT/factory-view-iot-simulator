@@ -1,0 +1,26 @@
+# Copia este archivo como config.yaml y ajústalo a tu entorno.
+# (Si config.yaml no existe, el simulador lo crea automáticamente a partir de este archivo.)
+
+mqtt:
+  host: broker.hivemq.com   # broker público de pruebas
+  port: 1883
+  username: ''
+  password: ''
+
+devices:
+- id: SM-001
+  type: site_monitor
+  topic: capacitacion/factory/site_monitor/SM-001
+  interval: 10
+- id: NRG-001
+  type: nrgy_monitor
+  topic: capacitacion/factory/nrgy_monitor/NRG-001
+  interval: 15
+- id: MM-001
+  type: machine_monitor
+  topic: capacitacion/factory/machine_monitor/MM-001
+  interval: 10
+- id: IPC-001
+  type: ipc_monitor
+  topic: capacitacion/factory/ipc_monitor/IPC-001
+  interval: 30
