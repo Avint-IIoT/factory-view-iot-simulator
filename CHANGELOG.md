@@ -2,6 +2,19 @@
 ```md
 # Changelog
 
+## [Unreleased]
+### Changed
+- Los cambios hechos desde la UI (agregar, editar, eliminar) se aplican sin reiniciar
+- Reconexión automática al broker MQTT y mensajes claros de conexión/desconexión
+- El simulador arranca aunque el broker no esté disponible
+- Un error en un dispositivo ya no detiene su hilo
+- Validación de ID duplicado, intervalo mínimo y tipo de dispositivo
+- La lista de tipos de la UI se genera desde `DEVICE_TYPES`
+- Rutas absolutas: se puede ejecutar desde cualquier carpeta
+- `logging` en lugar de `print`
+- Versiones fijas en `requirements.txt`
+- Migración a la API de callbacks v2 de paho-mqtt
+
 ## [1.1.0] - 2026-10-28
 ### Added
 - Nuevos dispositivos: Machine Monitor, Site Monitor CCH, Site Monitor INZ, IPC Monitor

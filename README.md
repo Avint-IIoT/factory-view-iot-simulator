@@ -89,8 +89,10 @@ devices:
 ```
 
 - `config.yaml` **no se sube al repositorio** (está en `.gitignore`), así cada uno puede usar su propio broker y credenciales.
-- Los dispositivos agregados desde la UI se guardan en `config.yaml`.
-  **Reinicia el simulador** para que empiecen a publicar.
+- Los dispositivos que agregas, editas o eliminas desde la UI se guardan en `config.yaml`
+  y se aplican al instante, sin reiniciar.
+- La UI muestra si hay conexión con el broker. Si se cae, el simulador reintenta solo
+  y los mensajes de la terminal indican qué está pasando.
 
 > ⚠️ `broker.hivemq.com` es un broker público: cualquiera puede leer lo que publiques. Úsalo solo con datos de prueba
 > y usa un prefijo de topic propio (por ejemplo `capacitacion/<tu-nombre>/...`) para no mezclarte con otros.
@@ -149,5 +151,9 @@ mosquitto_sub -h broker.hivemq.com -t "capacitacion/#" -v
        }
    ```
 
-2. Regístralo en `DEVICE_TYPES` dentro de `simulator/main.py`.
-3. Agrega la opción en el `<select name="type">` de `simulator/templates/index.html`.
+2. Impórtalo y regístralo en `DEVICE_TYPES` dentro de `simulator/main.py`.
+   La interfaz web lo muestra automáticamente en la lista de tipos.
+
+> 💡 La función puede devolver datos reales en lugar de aleatorios (por ejemplo, leyendo
+> los sensores o el controlador de un robot). El simulador se encarga de publicarlos en el
+> topic y con el intervalo configurados.

@@ -138,18 +138,30 @@
         <h1>IoT Device Simulator</h1>
         <p class="subtitle">Simulación de dispositivos enviando datos por MQTT</p>
 
+        <p class="subtitle">
+            Broker <strong>{{ mqtt_host }}</strong>:
+            {% if mqtt_connected %}
+            <span style="color:#22c55e;">● conectado</span>
+            {% else %}
+            <span style="color:var(--danger);">● sin conexión</span>
+            {% endif %}
+        </p>
+
+        {% if error %}
+        <div class="card" style="border:1px solid var(--danger); color:var(--danger);">
+            {{ error }}
+        </div>
+        {% endif %}
+
         <div class="card">
             <h2>Agregar Dispositivo</h2>
             <form method="post" action="/add">
                 <div>
                     <label>Tipo de dispositivo</label>
                     <select name="type">
-                        <option value="site_monitor">Site Monitor</option>
-                        <option value="nrgy_monitor">NRGY Monitor</option>
-                        <option value="machine_monitor">Machine Monitor</option>
-                        <option value="site_monitor_cch">Site Monitor CCH</option>
-                        <option value="site_monitor_inz">Site Monitor INZ</option>
-                        <option value="ipc_monitor">IPC Monitor</option>
+                        {% for t in device_types %}
+                        <option value="{{ t }}">{{ t }}</option>
+                        {% endfor %}
                     </select>
                 </div>
 
@@ -185,7 +197,7 @@
                         <input name="topic" value="{{ d.topic }}" />
 
                         <span class="muted">Intervalo (s)</span>
-                        <input name="interval" type="number" value="{{ d.interval }}" />
+                        <input name="interval" type="number" min="1" value="{{ d.interval }}" required />
 
                         <input type="hidden" name="device_id" value="{{ d.id }}" />
                         <button type="submit">Guardar cambios</button>
